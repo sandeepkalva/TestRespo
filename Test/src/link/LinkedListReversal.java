@@ -6,20 +6,45 @@ public class LinkedListReversal {
 	static Node current = null;
 	public static void main(String[] args) {
 
-		insert(1);
-		insert(2);
-		insert(3);
-		insert(4);
-		insert(5);
+		insertData();
 
-//		print();
-//
-//		head=reverse(head,2);
-//		System.out.println();
-//		print();
-//		
+		head=reverse(head,2);
+		System.out.println();
+		print();
+		
 		head=recursiveReverse(head,null);
 		print();
+		System.out.println("Size: "+size());
+		Node middleNode = middle();
+		System.out.println("Middel Node:"+middleNode.val);
+	
+	}
+
+	private static void insertData() {
+		System.out.println("Inserting Random Data");
+//		Random r = new Random();
+//		r.ints(1,30).limit(10).forEach(i->insert(i));
+		for(int i =1;i<12;i++)
+			insert(i);
+		System.out.println("Linkedlist :");
+		print();
+	}
+
+	private static Node middle() {
+		Node n=head;
+		for(Node n2 = head;n2!=null && n2.next!=null;n2=n2.next.next) {
+			n=n.next;
+		}
+		return n;
+		
+	}
+
+	private static int size() {
+		int size =0;
+		for(Node n=head ;n!=null ;n=n.next) {
+			size++;
+		}
+		return size;
 	}
 
 	private static Node recursiveReverse(Node head,Node prev) {
@@ -31,9 +56,6 @@ public class LinkedListReversal {
 		prev = curr;
 		curr = next;
 		return recursiveReverse(curr,prev);
-		
-		
-		
 		
 	}
 
@@ -68,9 +90,10 @@ public class LinkedListReversal {
 	}
 
 	private static void print() {
+	
 		for(Node n = head;n!=null;n=n.next)
 			System.out.print(n.val+"->");
-
+		System.out.println("\n----------");
 	}
 
 	private static void insert(int i) {
