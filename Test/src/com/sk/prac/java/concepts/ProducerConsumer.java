@@ -6,10 +6,10 @@ import java.util.ArrayList;
 public class ProducerConsumer {
 
 	protected static ArrayList<Integer> resource = new ArrayList<>();
-	protected static int CAP =10;
+	protected final static int CAP =10;
 	public static void main(String[] args) {
 		produce();
-		consumer();
+		consume();
 	}
 
 	private static void produce() {
@@ -39,7 +39,7 @@ public class ProducerConsumer {
 	}
 
 
-	private static void consumer() {
+	private static void consume() {
 		new Thread(new Runnable() {
 
 			@Override
